@@ -1,0 +1,12 @@
+node_modules/
+*.log
+.DS_Store
+.env
+.env.local
+dist/
+
+# pnpm-only: pnpm-lock.yaml is the single source of truth. npm/yarn lockfiles
+# are dead weight pnpm ignores and silently drift from package.json.
+package-lock.json
+npm-shrinkwrap.json
+yarn.lock
