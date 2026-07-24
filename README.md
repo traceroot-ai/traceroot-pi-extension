@@ -1,4 +1,4 @@
-# @traceroot-ai/pi-extension
+# traceroot-pi-extension
 
 TraceRoot extension for [pi](https://github.com/earendil-works/pi-coding-agent) that sends per-session traces to [TraceRoot](https://traceroot.ai).
 
@@ -45,17 +45,6 @@ export TRACEROOT_API_KEY="tr-..."
 Restart pi, or open a new terminal session, after setting the variables.
 
 ---
-
-## Local development
-
-```bash
-pnpm install
-pnpm build
-pnpm typecheck
-pnpm test
-pnpm lint
-pnpm format:check
-```
 
 ## License
 
