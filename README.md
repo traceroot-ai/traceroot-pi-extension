@@ -1,6 +1,10 @@
 # traceroot-pi-extension
 
-TraceRoot extension for [pi](https://github.com/earendil-works/pi-coding-agent) that sends per-session traces to [TraceRoot](https://traceroot.ai).
+[![npm version](https://img.shields.io/npm/v/%40traceroot-ai%2Fpi-extension)](https://www.npmjs.com/package/@traceroot-ai/pi-extension)
+
+[npm package](https://www.npmjs.com/package/@traceroot-ai/pi-extension) · [Pi package page](https://pi.dev/packages/@traceroot-ai/pi-extension)
+
+TraceRoot extension for [pi](https://github.com/earendil-works/pi/tree/main/packages/coding-agent) that sends per-session traces to [TraceRoot](https://traceroot.ai).
 
 Each pi session is traced with conversation turns, LLM calls, tool executions, token usage, and session continuity metadata.
 
@@ -8,7 +12,7 @@ Each pi session is traced with conversation turns, LLM calls, tool executions, t
 
 ## Installation
 
-Install from npm:
+Install [@traceroot-ai/pi-extension](https://www.npmjs.com/package/@traceroot-ai/pi-extension) from npm:
 
 ```bash
 pi install npm:@traceroot-ai/pi-extension
