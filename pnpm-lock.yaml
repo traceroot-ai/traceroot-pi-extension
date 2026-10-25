@@ -9,7 +9,8 @@ overrides:
   brace-expansion@>=5.0.0 <5.0.12: ^5.0.12
   js-yaml@>=4.0.0 <4.3.2: ^4.3.2
   protobufjs@>=7.0.0 <7.6.5: ^7.6.5
-  undici@>=8.0.0 <8.9.0: ^8.9.0
+  undici@>=8.0.0 <8.12.2: ^8.12.2
+  zod@>=4.0.0 <4.6.6: ^4.6.6
 
 importers:
 
@@ -17,7 +18,7 @@ importers:
     dependencies:
       '@earendil-works/pi-coding-agent':
         specifier: '>=0.79.0 <1'
-        version: 0.80.3(ws@8.21.0)(zod@4.4.3)
+        version: 0.80.3(ws@8.21.0)(zod@4.6.7)
       '@opentelemetry/api':
         specifier: ^1.9.0
         version: 1.9.1
@@ -59,7 +60,7 @@ packages:
     resolution: {integrity: sha512-LAmu761tSN9r66ixvmciswUj/ZC+1Q4iAfpedTfSVLeswRwnY3n2Nb6Tsk+cLPP28aLOPWeMgIuTuCcMC6W/iw==}
     hasBin: true
     peerDependencies:
-      zod: ^3.25.0 || ^4.0.0
+      zod: ^4.6.6
     peerDependenciesMeta:
       zod:
         optional: true
@@ -396,12 +397,14 @@ packages:
   '@opentelemetry/sdk-trace-base@1.30.1':
     resolution: {integrity: sha512-jVPgBbH1gCy2Lb7X0AVQ8XAfgg0pJ4nvl8/IiQA6nxOsPvS+0zMJaFSs2ltXe0J6C8dqjcnpyqINDJmU30+uOg==}
     engines: {node: '>=14'}
+    deprecated: Use @opentelemetry/sdk-trace package
     peerDependencies:
       '@opentelemetry/api': '>=1.0.0 <1.10.0'
 
   '@opentelemetry/sdk-trace-node@1.30.1':
     resolution: {integrity: sha512-cBjYOINt1JxXdpw1e5MlHmFRc5fgj4GW/86vsKFxJCJ8AL4PdVtYH41gWwl4qd4uQjqEL1oJVrXkSy5cnduAnQ==}
     engines: {node: '>=14'}
+    deprecated: Use @opentelemetry/sdk-trace package
     peerDependencies:
       '@opentelemetry/api': '>=1.0.0 <1.10.0'
 
@@ -676,6 +679,7 @@ packages:
   eslint@9.39.4:
     resolution: {integrity: sha512-XoMjdBOwe/esVgEvLmNsD3IRHkm7fbKIUGvrleloJXUZgDHig2IPWNniv+GwjyJXzuNqVjlr5+4yVUZjycJwfQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -915,7 +919,7 @@ packages:
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
-      zod: ^3.25 || ^4.0
+      zod: ^4.6.6
     peerDependenciesMeta:
       ws:
         optional: true
@@ -1063,8 +1067,8 @@ packages:
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
-  undici@8.10.2:
-    resolution: {integrity: sha512-/y4/bH9YNU5hi9NIrpOuvGXFcxrj3CMrV+/AYpowAYTpHn8gX/XPFjNy766FPoYY0miQhdW977JFWKGNhBdwyQ==}
+  undici@8.12.3:
+    resolution: {integrity: sha512-+fdndUTwBP86cVjihTp21hZHo7d6oj1c/47XPA3lL8mM0XHs+C4EkcjmgRsFnFk2f/UONGDy9ItBItmXsLOQHw==}
     engines: {node: '>=22.19.0'}
 
   uri-js@4.4.1:
@@ -1107,18 +1111,18 @@ packages:
   zod-to-json-schema@3.25.2:
     resolution: {integrity: sha512-O/PgfnpT1xKSDeQYSCfRI5Gy3hPf91mKVDuYLUHZJMiDFptvP41MSnWofm8dnCm0256ZNfZIM7DSzuSMAFnjHA==}
     peerDependencies:
-      zod: ^3.25.28 || ^4
+      zod: ^4.6.6
 
-  zod@4.4.3:
-    resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
+  zod@4.6.7:
+    resolution: {integrity: sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==}
 
 snapshots:
 
-  '@anthropic-ai/sdk@0.91.1(zod@4.4.3)':
+  '@anthropic-ai/sdk@0.91.1(zod@4.6.7)':
     dependencies:
       json-schema-to-ts: 3.1.1
     optionalDependencies:
-      zod: 4.4.3
+      zod: 4.6.7
 
   '@aws-crypto/sha256-browser@5.2.0':
     dependencies:
@@ -1336,9 +1340,9 @@ snapshots:
 
   '@babel/runtime@7.29.7': {}
 
-  '@earendil-works/pi-agent-core@0.80.3(ws@8.21.0)(zod@4.4.3)':
+  '@earendil-works/pi-agent-core@0.80.3(ws@8.21.0)(zod@4.6.7)':
     dependencies:
-      '@earendil-works/pi-ai': 0.80.3(ws@8.21.0)(zod@4.4.3)
+      '@earendil-works/pi-ai': 0.80.3(ws@8.21.0)(zod@4.6.7)
       ignore: 7.0.5
       typebox: 1.1.38
       yaml: 2.9.0
@@ -1350,9 +1354,9 @@ snapshots:
       - ws
       - zod
 
-  '@earendil-works/pi-ai@0.80.3(ws@8.21.0)(zod@4.4.3)':
+  '@earendil-works/pi-ai@0.80.3(ws@8.21.0)(zod@4.6.7)':
     dependencies:
-      '@anthropic-ai/sdk': 0.91.1(zod@4.4.3)
+      '@anthropic-ai/sdk': 0.91.1(zod@4.6.7)
       '@aws-sdk/client-bedrock-runtime': 3.1048.0
       '@google/genai': 1.52.0
       '@mistralai/mistralai': 2.2.6(@opentelemetry/api@1.9.0)
@@ -1360,7 +1364,7 @@ snapshots:
       '@smithy/node-http-handler': 4.7.3
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
-      openai: 6.26.0(ws@8.21.0)(zod@4.4.3)
+      openai: 6.26.0(ws@8.21.0)(zod@4.6.7)
       partial-json: 0.1.7
       typebox: 1.1.38
     transitivePeerDependencies:
@@ -1371,10 +1375,10 @@ snapshots:
       - ws
       - zod
 
-  '@earendil-works/pi-coding-agent@0.80.3(ws@8.21.0)(zod@4.4.3)':
+  '@earendil-works/pi-coding-agent@0.80.3(ws@8.21.0)(zod@4.6.7)':
     dependencies:
-      '@earendil-works/pi-agent-core': 0.80.3(ws@8.21.0)(zod@4.4.3)
-      '@earendil-works/pi-ai': 0.80.3(ws@8.21.0)(zod@4.4.3)
+      '@earendil-works/pi-agent-core': 0.80.3(ws@8.21.0)(zod@4.6.7)
+      '@earendil-works/pi-ai': 0.80.3(ws@8.21.0)(zod@4.6.7)
       '@earendil-works/pi-tui': 0.80.3
       '@silvia-odwyer/photon-node': 0.3.4
       chalk: 5.6.2
@@ -1389,7 +1393,7 @@ snapshots:
       proper-lockfile: 4.1.2
       semver: 7.8.0
       typebox: 1.1.38
-      undici: 8.10.2
+      undici: 8.12.3
       yaml: 2.9.0
     optionalDependencies:
       '@mariozechner/clipboard': 0.3.9
@@ -1527,8 +1531,8 @@ snapshots:
     dependencies:
       '@opentelemetry/semantic-conventions': 1.41.1
       ws: 8.21.0
-      zod: 4.4.3
-      zod-to-json-schema: 3.25.2(zod@4.4.3)
+      zod: 4.6.7
+      zod-to-json-schema: 3.25.2(zod@4.6.7)
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
     transitivePeerDependencies:
@@ -2153,10 +2157,10 @@ snapshots:
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
 
-  openai@6.26.0(ws@8.21.0)(zod@4.4.3):
+  openai@6.26.0(ws@8.21.0)(zod@4.6.7):
     optionalDependencies:
       ws: 8.21.0
-      zod: 4.4.3
+      zod: 4.6.7
 
   optionator@0.9.4:
     dependencies:
@@ -2283,7 +2287,7 @@ snapshots:
 
   undici-types@6.21.0: {}
 
-  undici@8.10.2: {}
+  undici@8.12.3: {}
 
   uri-js@4.4.1:
     dependencies:
@@ -2303,8 +2307,8 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod-to-json-schema@3.25.2(zod@4.4.3):
+  zod-to-json-schema@3.25.2(zod@4.6.7):
     dependencies:
-      zod: 4.4.3
+      zod: 4.6.7
 
-  zod@4.4.3: {}
+  zod@4.6.7: {}
