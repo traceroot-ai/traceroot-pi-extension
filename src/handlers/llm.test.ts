@@ -101,6 +101,30 @@ test('message_end records token usage on the active LLM span', async () => {
   assert.equal(firstSpan(spans).attrs['gen_ai.usage.output_tokens'], 5);
 });
 
+test('message_end reports input tokens gross of cache, because pi reports usage.input net', async () => {
+  // pi's usage.input leaves out cacheRead and cacheWrite. The backend prices
+  // input - cache_read - cache_write as uncached input, so a net count floors
+  // that bucket to 0 and the uncached tokens are never charged.
+  const { rt, handlers, spans } = fakeRuntime();
+  registerLlm(rt);
+  await fire(handlers, 'turn_start', { turnIndex: 0 }, MODEL_CTX);
+  await fire(handlers, 'message_end', {
+    message: {
+      role: 'assistant',
+      usage: { input: 3, output: 120, cacheRead: 3581, cacheWrite: 834, totalTokens: 4538 },
+    },
+  });
+  const attrs = firstSpan(spans).attrs;
+  // 3 uncached + 3581 read + 834 written.
+  assert.equal(attrs['gen_ai.usage.input_tokens'], 4418);
+  // input + output adds up to pi's own totalTokens.
+  assert.equal(
+    (attrs['gen_ai.usage.input_tokens'] as number) +
+      (attrs['gen_ai.usage.output_tokens'] as number),
+    attrs['traceroot.pi.total_tokens'],
+  );
+});
+
 test('message_end ignores non-assistant messages', async () => {
   const { rt, handlers, spans } = fakeRuntime();
   registerLlm(rt);
