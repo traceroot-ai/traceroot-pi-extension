@@ -6,11 +6,11 @@ import type { ExtensionContext } from './types.ts';
 const STATUS_KEY = 'traceroot';
 const WIDGET_KEY = 'traceroot';
 
-export const STATUS_ACTIVE = 'Traceroot ●';
-export const STATUS_INACTIVE = 'Traceroot ○';
+export const STATUS_ACTIVE = 'traceroot ●';
+export const STATUS_INACTIVE = 'traceroot ○';
 
 // README documents TRACEROOT_SHOW_UI as controlling the status indicator AND the
-// trace widget; both must honor it or opting out leaves a permanent "Traceroot ●"
+// trace widget; both must honor it or opting out leaves a permanent "traceroot ●"
 // in the status bar.
 export function setStatus(
   ctx: ExtensionContext | undefined,
@@ -30,7 +30,7 @@ export function updateTraceLinkWidget(
 ): void {
   try {
     if (!ctx?.hasUI || !details.enabled || !details.traceId) return;
-    ctx.ui.setWidget(WIDGET_KEY, [`Traceroot trace: ${details.traceId}`], {
+    ctx.ui.setWidget(WIDGET_KEY, [`traceroot trace: ${details.traceId}`], {
       placement: 'belowEditor',
     });
   } catch {
@@ -59,7 +59,7 @@ export function setConfigIssue(
       ctx.ui.setWidget(ISSUE_KEY, undefined);
       return;
     }
-    ctx.ui.setWidget(ISSUE_KEY, [`Traceroot config ${issue.severity}: ${issue.message}`], {
+    ctx.ui.setWidget(ISSUE_KEY, [`traceroot config ${issue.severity}: ${issue.message}`], {
       placement: 'belowEditor',
     });
   } catch {

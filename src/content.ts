@@ -1,5 +1,5 @@
 // Render pi message/tool content into the readable strings that populate a span's
-// input/output panels in Traceroot. pi content is `string | (TextContent | toolCall
+// input/output panels in traceroot. pi content is `string | (TextContent | toolCall
 // | image)[]`; tool results are `{ content: TextContent[] }`. We flatten text blocks
 // and summarize tool-call/image blocks rather than dumping raw JSON.
 import { safeJsonTruncate, truncateString } from './json.ts';

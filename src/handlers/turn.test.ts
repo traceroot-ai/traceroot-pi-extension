@@ -223,7 +223,7 @@ test('an untrusted project latches immediately (stable outcome, no re-read)', as
 test('a trusted project-local traceroot.json project override reaches the session span', async () => {
   // The provider Resource bakes in the load-time project; the project-local file is
   // only applied at first agent_start. The span-level traceroot.project stamp is what
-  // makes the documented override actually land in TraceRoot.
+  // makes the documented override actually land in traceroot.
   await withTempDir(async (dir) => {
     mkdirSync(join(dir, '.pi'));
     writeFileSync(join(dir, '.pi', 'traceroot.json'), JSON.stringify({ project: 'repo-project' }));
