@@ -128,7 +128,14 @@ export function registerLlm(rt: Runtime): void {
 
     const usage = message.usage;
     if (usage) {
-      setAttr(entry.span, 'gen_ai.usage.input_tokens', usage.input ?? 0);
+      // pi's usage.input leaves out cacheRead and cacheWrite. Report it gross, as
+      // gen_ai.usage.input_tokens is defined, so the backend's
+      // input - cache_read - cache_write gets the uncached count back.
+      setAttr(
+        entry.span,
+        'gen_ai.usage.input_tokens',
+        (usage.input ?? 0) + (usage.cacheRead ?? 0) + (usage.cacheWrite ?? 0),
+      );
       setAttr(entry.span, 'gen_ai.usage.output_tokens', usage.output ?? 0);
       if (usage.cacheRead != null)
         setAttr(entry.span, 'gen_ai.usage.cache_read_input_tokens', usage.cacheRead);
