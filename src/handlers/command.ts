@@ -14,14 +14,14 @@ export function flushNotification(outcome: FlushOutcome): {
   message: string;
   level: 'info' | 'error';
 } {
-  if (outcome === 'flushed') return { message: 'Traceroot: flushed.', level: 'info' };
+  if (outcome === 'flushed') return { message: 'traceroot: flushed.', level: 'info' };
   if (outcome === 'timeout') {
     return {
-      message: 'Traceroot: flush timed out; the endpoint may be unreachable.',
+      message: 'traceroot: flush timed out; the endpoint may be unreachable.',
       level: 'error',
     };
   }
-  return { message: 'Traceroot: flush failed.', level: 'error' };
+  return { message: 'traceroot: flush failed.', level: 'error' };
 }
 
 export function registerCommand(rt: Runtime): void {
@@ -29,7 +29,7 @@ export function registerCommand(rt: Runtime): void {
   if (typeof pi.registerCommand !== 'function') return;
 
   pi.registerCommand('traceroot', {
-    description: 'Traceroot tracing: status | flush | disable | enable',
+    description: 'traceroot tracing: status | flush | disable | enable',
     handler: async (args: string, ctx: CommandContext) => {
       // The command handler runs inside pi's dispatch, which does not catch a rejected
       // handler — an escaped error would become an unhandled rejection in the host.
@@ -48,13 +48,13 @@ export function registerCommand(rt: Runtime): void {
               state.sessionDisabled ? 'session=disabled' : 'session=active',
               state.sessionTraceId ? `traceId=${state.sessionTraceId}` : 'trace=none yet',
             ];
-            ctx.ui.notify(`Traceroot — ${lines.join('  |  ')}`, 'info');
+            ctx.ui.notify(`traceroot — ${lines.join('  |  ')}`, 'info');
             return;
           }
           case 'flush': {
             if (state.providerShutdown) {
               ctx.ui.notify(
-                'Traceroot: tracing has shut down for this session; nothing to flush.',
+                'traceroot: tracing has shut down for this session; nothing to flush.',
                 'warning',
               );
               return;
@@ -76,30 +76,30 @@ export function registerCommand(rt: Runtime): void {
             // The trace widget advertises a trace that will receive no more spans;
             // leaving it up directly contradicts the "disabled" notice below.
             clearWidget(ctx);
-            ctx.ui.notify('Traceroot: tracing disabled for this session.', 'info');
+            ctx.ui.notify('traceroot: tracing disabled for this session.', 'info');
             return;
           }
           case 'enable': {
             if (state.providerShutdown) {
               ctx.ui.notify(
-                'Traceroot: tracing has shut down for this session; cannot enable.',
+                'traceroot: tracing has shut down for this session; cannot enable.',
                 'warning',
               );
               return;
             }
             state.sessionDisabled = false;
             setStatus(ctx, config, STATUS_ACTIVE);
-            ctx.ui.notify('Traceroot: tracing enabled for this session.', 'info');
+            ctx.ui.notify('traceroot: tracing enabled for this session.', 'info');
             return;
           }
           default:
-            ctx.ui.notify('Traceroot: usage — /traceroot [status|flush|disable|enable]', 'info');
+            ctx.ui.notify('traceroot: usage — /traceroot [status|flush|disable|enable]', 'info');
         }
       } catch (err) {
         // A user explicitly invoked this command, so — unlike a background event handler
         // — surface a failure to them, not only to the debug log.
         try {
-          ctx.ui.notify('Traceroot: the command failed unexpectedly.', 'error');
+          ctx.ui.notify('traceroot: the command failed unexpectedly.', 'error');
         } catch {
           /* ui unavailable in this mode */
         }

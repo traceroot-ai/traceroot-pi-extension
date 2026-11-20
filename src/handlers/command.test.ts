@@ -43,7 +43,7 @@ test('flushNotification distinguishes timeout from rejection', () => {
   // /traceroot flush is typically run when the endpoint is already suspect, so a
   // hung flush ("timed out", endpoint unreachable) must read differently from a
   // rejected one ("failed"). Both are errors; success is info.
-  assert.deepEqual(flushNotification('flushed'), { message: 'Traceroot: flushed.', level: 'info' });
+  assert.deepEqual(flushNotification('flushed'), { message: 'traceroot: flushed.', level: 'info' });
   const timeout = flushNotification('timeout');
   assert.equal(timeout.level, 'error');
   assert.match(timeout.message, /timed out/i);

@@ -4,7 +4,7 @@
 
 [npm package](https://www.npmjs.com/package/@traceroot-ai/pi-extension) · [Pi package page](https://pi.dev/packages/@traceroot-ai/pi-extension)
 
-TraceRoot extension for [pi](https://github.com/earendil-works/pi/tree/main/packages/coding-agent) that sends per-session traces to [TraceRoot](https://traceroot.ai).
+traceroot extension for [pi](https://github.com/earendil-works/pi/tree/main/packages/coding-agent) that sends per-session traces to [traceroot](https://traceroot.ai).
 
 Each pi session is traced with conversation turns, LLM calls, tool executions, token usage, and session continuity metadata.
 
@@ -33,8 +33,8 @@ Tracing is opt-in. Set the following environment variables before starting pi:
 | Variable                  | Required | Description                                                                                                |
 | ------------------------- | -------- | ---------------------------------------------------------------------------------------------------------- |
 | `TRACEROOT_ENABLED`       | Yes      | Set to `true` to enable tracing.                                                                           |
-| `TRACEROOT_API_KEY`       | Yes      | Your TraceRoot API key. Find it at [app.traceroot.ai](https://app.traceroot.ai) under Settings > API Keys. |
-| `TRACEROOT_HOST_URL`      | No       | TraceRoot base URL. Defaults to the hosted service. Set this only when self-hosting.                       |
+| `TRACEROOT_API_KEY`       | Yes      | Your traceroot API key. Find it at [app.traceroot.ai](https://app.traceroot.ai) under Settings > API Keys. |
+| `TRACEROOT_HOST_URL`      | No       | traceroot base URL. Defaults to the hosted service. Set this only when self-hosting.                       |
 | `TRACEROOT_OTLP_ENDPOINT` | No       | Explicit OTLP traces endpoint override. Defaults to `<TRACEROOT_HOST_URL>/api/v1/public/traces`.           |
 
 Example (add to `~/.zshrc`, `~/.bashrc`, or your shell profile):
